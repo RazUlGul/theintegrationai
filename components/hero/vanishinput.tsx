@@ -1,7 +1,6 @@
 import axios from "axios";
 import Image from "next/image";
 import { IoReturnDownForwardSharp } from "react-icons/io5";
-import type { v4 as uuidv4Type } from 'uuid';
 import './index.css'
 
 // Dynamically import uuid to avoid SSR issues
@@ -11,6 +10,8 @@ const getUuid = async (): Promise<string> => {
 };
 
 const useSessionUserId = () => {
+  const [userId, setUserId] = useState<string | null>(null);
+
   useEffect(() => {
     const initializeUserId = async () => {
       let existingId = sessionStorage.getItem("nova-user-id");
@@ -19,8 +20,7 @@ const useSessionUserId = () => {
         sessionStorage.setItem("nova-user-id", existingId);
       }
       setUserId(existingId);
-    }
+    };
     
     initializeUserId();
   }, []);
-}
