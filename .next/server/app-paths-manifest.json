@@ -1,3 +1,5 @@
 {
-  "/_not-found/page": "app/_not-found/page.js"
+  "/api/book/route": "app/api/book/route.js",
+  "/api/cal/route": "app/api/cal/route.js",
+  "/api/voiceflow/route": "app/api/voiceflow/route.js"
 }
