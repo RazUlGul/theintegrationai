@@ -93,7 +93,6 @@ export const VanishInput = ({
         actionType: "text",
         payload: userMessage + '::[SERVICES BEGIN]::' + arrayToCommaString(services),
       });
-      setServices([]);
 
       const steps = response.data.steps;
       const parsed = steps.map((step: any) => {
@@ -115,6 +114,9 @@ export const VanishInput = ({
         ...prev.filter(msg => msg.message !== '...Nova is writing a response'),
         ...parsed
       ]);
+      
+      // Clear services after processing the response
+      setServices([]);
     } catch (err) {
       console.error("Error sending message:", err);
       setConversation(prev => [
@@ -155,7 +157,7 @@ export const VanishInput = ({
 
   const BlurInput = () => {
     setIsFocused(false);
-    setActive(true);
+    // Keep chat active when input loses focus to maintain expanded state
   };
 
   if (!userId) return null;

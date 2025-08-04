@@ -3,8 +3,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
-  const apiKey = process.env.CAL_API_KEY ?? 'cal_live_4b1b1e8d0399ef03ff69b5fbcc5e7c54';
-  const defaultEventTypeId = process.env.CAL_EVENT_TYPE_ID ?? '2269133';
+  const apiKey = process.env.CAL_API_KEY;
+  const defaultEventTypeId = process.env.CAL_EVENT_TYPE_ID;
+
+  if (!apiKey || !defaultEventTypeId) {
+    return NextResponse.json({ error: 'Missing CAL_API_KEY or CAL_EVENT_TYPE_ID in environment' }, { status: 500 });
+  }
 
   const { searchParams } = new URL(req.url);
 

@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const PANDADOC_API_KEY = process.env.PANDADOC_API_KEY ?? 'df39615846fc8ecbdc3e61171cadb09886ffa95e';
+const PANDADOC_API_KEY = process.env.PANDADOC_API_KEY;
 
 export async function GET(req: NextRequest) {
   const documentId = req.nextUrl.searchParams.get("documentId");
   if (!documentId) return NextResponse.json({ error: "Missing documentId" }, { status: 400 });
+  if (!PANDADOC_API_KEY) return NextResponse.json({ error: "Missing PANDADOC_API_KEY in environment" }, { status: 500 });
 
   try {
     const downloadRes = await fetch(`https://api.pandadoc.com/public/v1/documents/${documentId}/download`, {

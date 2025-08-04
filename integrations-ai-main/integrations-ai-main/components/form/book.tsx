@@ -104,7 +104,6 @@ export const BookFormComponent = ({ close }: { close: Function }) => {
                         <div className="max-w-7xl px-4 mx-auto py-8 w-full relative z-10">
                             <div className="flex justify-end">
                                 <div className="text-white text-xl pr-4 cursor-pointer hover:scale-105" onClick={() => close()}>
-                                    {/* @ts-ignore */}
                                     <FaX />
                                 </div>
                             </div>

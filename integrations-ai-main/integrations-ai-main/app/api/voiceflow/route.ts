@@ -2,9 +2,13 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-const APIKEY = process.env.API_KEY || 'VF.DM.67f539ea2bfa1eff8c1a7c41.VKlMMrDZWJX3tYTh';
+const APIKEY = process.env.API_KEY;
 
 export async function POST(req: NextRequest) {
+  if (!APIKEY) {
+    return NextResponse.json({ error: 'Missing API_KEY in environment' }, { status: 500 });
+  }
+
   try {
     const body = await req.json();
 
