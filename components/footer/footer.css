@@ -1,0 +1,13 @@
+footer button {
+    padding: 8px 12px;
+    background: black;
+    color: white;
+    border: 3px solid black;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+footer button:hover {
+    background: white;
+    color: black;
+}

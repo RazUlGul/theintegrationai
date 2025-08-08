@@ -1,0 +1,30 @@
+
+
+.hero .card {
+    height: 468px;
+    background-image: url('../../public/hero_bg.png');
+    border-radius: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero button {
+    padding: 8px 24px;
+    background: black;
+    color: white;
+    border: 3px solid black;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.hero button:hover {
+    background: white;
+    color: black;
+}
+
+@media (min-width: 1024px) {
+    .hero .card {
+        height: 768px;
+    }
+}
